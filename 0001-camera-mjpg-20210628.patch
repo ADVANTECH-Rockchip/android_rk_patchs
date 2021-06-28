@@ -1,0 +1,19 @@
+commit 2baf2e2db86f2e53cc1f651522df6cbee2049ebc (HEAD, origin/android-6.0.1-r55)
+Author: wei.zeng <wei.zeng@advantech.com.cn>
+Date:   Tue Jun 22 17:04:27 2021 +0800
+
+    fixed camera issue for open/close many times
+
+diff --git a/rockchip/camera/CameraHal/CameraAdapter.cpp b/rockchip/camera/CameraHal/CameraAdapter.cpp
+index 8ce24f0..6e00526 100755
+--- a/rockchip/camera/CameraHal/CameraAdapter.cpp
++++ b/rockchip/camera/CameraHal/CameraAdapter.cpp
+@@ -424,7 +424,7 @@ int CameraAdapter::cameraCreate(int cameraId)
+         
+     }
+ 
+-    
++    mCamDriverPreviewFmt = V4L2_PIX_FMT_MJPEG;
+     LOGD("%s(%d): Current driver is %s, v4l2 memory is %s",__FUNCTION__,__LINE__,mCamDriverCapability.driver, 
+         (mCamDriverV4l2MemType==V4L2_MEMORY_MMAP)?"V4L2_MEMORY_MMAP":"V4L2_MEMORY_OVERLAY");
+    mCamFd = iCamFd;
